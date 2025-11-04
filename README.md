@@ -15,7 +15,7 @@ This website contains two public pages used in the Pig Dice Android app:
 
 ## 💡 Technologies Used
 - HTML5 & CSS3  
-- [Formspree](https://formspree.io) (for the contact form)  
+- JavaScript
 - GitHub Pages (for hosting)
 
 ---
