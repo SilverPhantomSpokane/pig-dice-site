@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Support — Pig Dice Game</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; max-width: 800px; margin: 2rem auto; padding: 1rem; background:#f5f7fa; color:#222; }
+    h1 { color:#444; margin-bottom: 0.5rem; }
+    p { line-height: 1.6; }
+    label { display:block; margin-top:1rem; font-weight:600; }
+    input, textarea { width:100%; padding:.6rem; font-size:1rem; border:1px solid #ccc; border-radius:8px; }
+    button { margin-top:1rem; padding:.7rem 1.25rem; font-size:1rem; background:#007bff; color:#fff; border:none; border-radius:8px; cursor:pointer; }
+    button:hover { background:#0056b3; }
+    .card { background:#fff; padding: 1.25rem 1.5rem; border-radius: 12px; box-shadow: 0 6px 24px rgba(0,0,0,.06); }
+    a { color:#0056b3; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>Contact Support</h1>
+    <p>If you have a question about the Pig Dice Game, please fill out the form below:</p>
+
+    <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+      <label for="email">Your Email:</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="message">Your Question:</label>
+      <textarea id="message" name="message" rows="6" required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+
+    <p><a href="about.html">← Back to About page</a></p>
+  </main>
+</body>
+</html>
