@@ -20,34 +20,20 @@
 <body>
   <main class="card">
     <h1>Contact Pig Dice Developer</h1>
-    <p>If you have questions or feedback about the Pig Dice app, please contact us below.</p>
+    <p>If you have questions or feedback about the Pig Dice app, please contact us below. We’ll respond within 24 hours.</p>
 
-    <form id="contactForm">
+    <form action="https://formspree.io/f/xwpwdrkd" method="POST">
       <label>Your Email:
-        <input type="email" id="email" required>
+        <input type="email" name="email" required>
       </label>
       <label>Your Message:
-        <textarea id="message" rows="5" required></textarea>
+        <textarea name="message" rows="5" required></textarea>
       </label>
       <button type="submit">Send Message</button>
     </form>
 
-    <p id="status"></p>
+    <p><em>Thank you for reaching out! Your message will be sent directly to our support team at dicegamepig@gmail.com.</em></p>
     <p><a href="about.html">← Back to About page</a></p>
   </main>
-
-  <script>
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-
-      const email = document.getElementById('email').value;
-      const message = document.getElementById('message').value;
-
-      const mailtoLink = `mailto:dicegamepig@gmail.com?subject=Pig Dice Support&body=From: ${email}%0D%0A%0D%0A${message}`;
-      window.location.href = mailtoLink;
-
-      document.getElementById('status').textContent = "✅ Your mail app should open — please confirm sending!";
-    });
-  </script>
 </body>
 </html>
