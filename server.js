@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import mainRoutes from "./routes/main.js";
 import aboutRoutes from "./routes/about.js";
 import supportRoutes from "./routes/support.js";
+import SibApiV3Sdk from "sib-api-v3-sdk";
 
 dotenv.config();
 
@@ -26,57 +27,38 @@ app.use("/", mainRoutes);
 app.use("/about", aboutRoutes);
 app.use("/support", supportRoutes);
 
-// --- Отправка писем через Brevo SMTP ---
+// --- Отправка писем через Brevo API ---
 app.post("/send", async (req, res) => {
   const { email, message } = req.body;
 
   try {
-    const transporter = nodemailer.createTransport({
-      host: "smtp-relay.brevo.com",
-      port: 587, // можно 465, если хочешь SSL
-      secure: false, // true только если используешь порт 465
-      auth: {
-        user: process.env.BREVO_USER, // твой логин вроде "9ae149001@smtp-brevo.com"
-        pass: process.env.BREVO_PASS, // пароль от Brevo SMTP
-      },
-    });
+    const defaultClient = SibApiV3Sdk.ApiClient.instance;
+    const apiKey = defaultClient.authentications["api-key"];
+    apiKey.apiKey = process.env.BREVO_API_KEY;
 
-    await transporter.sendMail({
-      from: `"Pig Dice Support" <${process.env.BREVO_USER}>`,
-      to: process.env.EMAIL_RECEIVER || process.env.BREVO_USER,
+    const tranEmailApi = new SibApiV3Sdk.TransactionalEmailsApi();
+
+    const sendSmtpEmail = {
+      sender: { name: "Pig Dice Support", email: process.env.EMAIL_RECEIVER },
+      to: [{ email: process.env.EMAIL_RECEIVER }],
+      replyTo: { email },
       subject: "🐷 New message from Pig Dice Support",
-      replyTo: email,
-      text: `
-🐷 New message from Pig Dice Support
-
-From: ${email}
--------------------------------------
-${message}
--------------------------------------
-Please reply directly to this address: ${email}
-      `,
-      html: `
+      htmlContent: `
         <div style="font-family:Arial, sans-serif; padding:16px; background:#fff9fb; border-radius:10px;">
           <h2 style="color:#C2185B;">🐷 New message from Pig Dice Support</h2>
-
-          <p><strong>Sender’s email:</strong> 
+          <p><strong>Sender’s email:</strong>
             <a href="mailto:${email}" style="color:#C2185B; text-decoration:none;">${email}</a>
           </p>
-
-          <p style="margin-top:1rem; background:#fff; border-left:4px solid #C2185B; padding:10px;">
-            ${message}
-          </p>
-
+          <p style="margin-top:1rem; background:#fff; border-left:4px solid #C2185B; padding:10px;">${message}</p>
           <hr style="margin:20px 0; border:none; border-top:1px solid #f3dbe4;">
-          <p style="font-size:0.9rem; color:#999;">
-            Please reply directly to 
-            <a href="mailto:${email}" style="color:#C2185B;">${email}</a> 
-            to contact the sender.
+          <p style="font-size:0.9rem; color:#999;">Please reply directly to
+            <a href="mailto:${email}" style="color:#C2185B;">${email}</a>.
           </p>
         </div>
       `,
-    });
+    };
 
+    await tranEmailApi.sendTransacEmail(sendSmtpEmail);
     res.render("pages/support", { success: true });
   } catch (err) {
     console.error("❌ Email sending failed:", err);
@@ -89,3 +71,4 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () =>
   console.log(`✅ Server running on http://localhost:${PORT}`)
 );
+
