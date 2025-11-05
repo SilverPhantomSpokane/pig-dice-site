@@ -26,24 +26,24 @@ app.use("/", mainRoutes);
 app.use("/about", aboutRoutes);
 app.use("/support", supportRoutes);
 
-// --- Отправка писем ---
+// --- Отправка писем через Brevo SMTP ---
 app.post("/send", async (req, res) => {
   const { email, message } = req.body;
 
   try {
-   const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 465,
-  secure: true, // SSL
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
+    const transporter = nodemailer.createTransport({
+      host: "smtp-relay.brevo.com",
+      port: 587, // можно 465, если хочешь SSL
+      secure: false, // true только если используешь порт 465
+      auth: {
+        user: process.env.BREVO_USER, // твой логин вроде "9ae149001@smtp-brevo.com"
+        pass: process.env.BREVO_PASS, // пароль от Brevo SMTP
+      },
+    });
 
     await transporter.sendMail({
-      from: `"Pig Dice Support" <${process.env.EMAIL_USER}>`,
-      to: process.env.EMAIL_USER,
+      from: `"Pig Dice Support" <${process.env.BREVO_USER}>`,
+      to: process.env.EMAIL_RECEIVER || process.env.BREVO_USER,
       subject: "🐷 New message from Pig Dice Support",
       replyTo: email,
       text: `
