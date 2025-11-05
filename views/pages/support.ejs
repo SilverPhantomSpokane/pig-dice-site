@@ -1,0 +1,43 @@
+<%-
+  include('../layout', {
+    title: 'Support — Pig Dice Game',
+    body: `
+      <section class="support-section container my-5">
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <div class="p-4 rounded shadow-sm support-card">
+              <h1 class="text-danger fw-bold mb-3">Contact the Developer</h1>
+              <p class="mb-4 text-secondary">
+                If you have any questions or feedback about the <strong>Pig Dice</strong> app, 
+                please fill out the form below and we’ll reply soon!
+              </p>
+
+              <form action="/send" method="POST" class="support-form">
+                <div class="mb-3 text-start">
+                  <label for="email" class="form-label fw-semibold">Your Email:</label>
+                  <input type="email" id="email" name="email" class="form-control" required placeholder="you@example.com">
+                </div>
+
+                <div class="mb-3 text-start">
+                  <label for="message" class="form-label fw-semibold">Your Message:</label>
+                  <textarea id="message" name="message" rows="5" class="form-control" required placeholder="Type your question here..."></textarea>
+                </div>
+
+                <button type="submit" class="btn mt-2">Send Message</button>
+              </form>
+
+              ${typeof success !== 'undefined' && success
+                ? '<p class="success-text mt-3">✅ Message sent successfully! Thank you for reaching out.</p>'
+                : typeof error !== 'undefined' && error
+                ? '<p class="error-text mt-3">❌ Something went wrong. Please try again later.</p>'
+                : ''
+              }
+
+              <p class="mt-4"><a href="/" class="text-decoration-none text-danger">← Back to Home</a></p>
+            </div>
+          </div>
+        </div>
+      </section>
+    `
+  })
+%>

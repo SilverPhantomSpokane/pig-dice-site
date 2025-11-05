@@ -1,0 +1,52 @@
+<%- include('../layout', { body: `
+<div class="container my-5">
+  <div class="row align-items-start">
+
+    <!-- Левая колонка (иллюстрация / картинка) -->
+    <div class="col-md-4 text-center p-4 bg-light rounded shadow-sm">
+      <img src="/images/pig3.png" alt="Pig Dice Rules" class="img-fluid rounded mb-3" style="max-width: 250px;">
+      <h2 class="legend-title fw-bold fst-italic">How to Play</h2>
+      <p class="legend-text">
+        A simple yet addictive dice game of luck and courage.  
+        Every roll could bring victory — or reset your score!
+      </p>
+    </div>
+
+    <!-- Правая колонка (текст с правилами) -->
+    <div class="col-md-8">
+      <h2 class="legend-title mt-3">🎲 Pig Dice Game Rules 🐷</h2>
+
+      <p class="legend-text">
+        The Pig Dice game is played with two dice.  
+        Players take turns rolling both dice as many times as they wish, adding up their total points for the turn.
+      </p>
+
+      <p class="legend-text">
+        The goal is to reach <strong>100 points</strong>.  
+        But beware — if you roll a single <strong>1</strong> on either die, you lose all points accumulated during that turn and your turn ends immediately!
+      </p>
+
+      <p class="legend-text">
+        If you roll <strong>double 1’s</strong> (snake eyes 🐍), you lose your **entire score** — everything you earned so far.  
+        Risk and luck walk hand in hand!
+      </p>
+
+      <p class="legend-text">
+        You can stop at any time and “<strong>Hold</strong>” — which saves your current turn’s score and passes the dice to the next player.
+      </p>
+
+      <blockquote class="border-start border-3 border-danger ps-3 fst-italic text-secondary">
+        “Smart players know when to roll... and when to hold.”
+      </blockquote>
+
+      <p class="legend-text">
+        Whether you’re facing a friend, a computer, or fate itself —  
+        remember: every roll is a chance, and every chance is a story.  
+        Play boldly, laugh loudly, and never fear the number one.
+      </p>
+
+      <p class="legend-title fst-italic fw-bold">Ready? Tap <strong>ROLL</strong> — and let the game begin!</p>
+    </div>
+  </div>
+</div>
+` }) %>
