@@ -1,10 +1,12 @@
 <%- include('../layout', { body: `
- <div class="container my-5">
+<div class="container-fluid py-4">
+
   <div class="row align-items-start">
     
     <!-- Левая колонка (фото + текст) -->
-    <div class="col-md-4 text-center p-4 bg-light rounded shadow-sm">
-      <img src="/images/myphoto.jpg" alt="Mariia Baranova" class="mb-3" style="max-width: 230px;">
+    <div class="col-12 col-md-4 mb-4 mb-md-0">
+    <img src="/images/myphoto.jpg" class="img-fluid mb-3 shadow-sm" alt="Mariia Baranova">
+>
       <h2 class="legend-title fw-bold fst-italic">Mariia Baranova</h2>
       <p class="text-start">
         Developer and designer of <strong>Pig Dice Game</strong> — a lighthearted Android app that mixes 
@@ -15,7 +17,7 @@
     </div>
 
     <!-- Правая колонка (история) -->
-    <div class="col-md-8">
+    <div class="col-12 col-md-8">
       <h1 class="legend-title mt-3">🐽 The Legend of Pigly and Her Dice Game 🎲</h1>
       <p class="legend-text">
         Once upon a time, on a sunny farm, there lived a little pig named <strong>Pigly</strong>.

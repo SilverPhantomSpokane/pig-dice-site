@@ -311,3 +311,12 @@ blockquote {
   margin-bottom: 1rem;
   text-indent: 1.2em; /* красивый отступ первой строки */
 }
+img {
+  max-width: 100%;
+  height: auto;
+}
+p {
+  font-size: 1rem;
+  text-align: justify;
+  line-height: 1.7;
+}

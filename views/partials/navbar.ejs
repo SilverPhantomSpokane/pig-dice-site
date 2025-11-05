@@ -1,12 +1,24 @@
-<nav class="navbar">
-  <div class="navbar-left">
-    <a href="/" class="brand">
+<nav class="navbar navbar-expand-md" style="background: linear-gradient(to bottom, #c2185b, #b31652); border-bottom: 3px solid #b2154f;">
+  <div class="container">
+    
+    <!-- Бренд -->
+    <a href="/" class="navbar-brand fw-bold text-white d-flex align-items-center gap-2">
       🐷 <span>Pig Dice</span> 🎲
     </a>
+
+    <!-- Кнопка для мобильного меню -->
+    <button class="navbar-toggler text-white border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Ссылки -->
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a href="/" class="nav-link text-white fw-semibold">Home</a></li>
+        <li class="nav-item"><a href="/about" class="nav-link text-white fw-semibold">About</a></li>
+        <li class="nav-item"><a href="/support" class="nav-link text-white fw-semibold">Support</a></li>
+      </ul>
+    </div>
+
   </div>
-  <ul class="navbar-links">
-    <li><a href="/">Home</a></li>
-    <li><a href="/about">About</a></li>
-    <li><a href="/support">Support</a></li>
-  </ul>
 </nav>
