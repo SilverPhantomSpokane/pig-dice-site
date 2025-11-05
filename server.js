@@ -1,12 +1,11 @@
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
-import nodemailer from "nodemailer";
+import SibApiV3Sdk from "sib-api-v3-sdk";
 import dotenv from "dotenv";
 import mainRoutes from "./routes/main.js";
 import aboutRoutes from "./routes/about.js";
 import supportRoutes from "./routes/support.js";
-import SibApiV3Sdk from "sib-api-v3-sdk";
 
 dotenv.config();
 
@@ -71,4 +70,3 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () =>
   console.log(`✅ Server running on http://localhost:${PORT}`)
 );
-
